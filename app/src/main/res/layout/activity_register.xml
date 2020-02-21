@@ -36,13 +36,14 @@
                 app:layout_constraintTop_toTopOf="parent"
                 />
 
-            <ImageView
+            <Button
                 android:id="@+id/imageView"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 app:layout_constraintBottom_toBottomOf="@+id/image_profile"
                 app:layout_constraintEnd_toEndOf="@+id/image_profile"
-                app:srcCompat="@drawable/edit_icon"
+                android:background="@drawable/edit_icon"
+                android:onClick="handleProfile"
                 />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -184,6 +185,7 @@
         android:layout_marginBottom="8dp"
         android:background="@drawable/btn_red_large"
         android:text="@android:string/ok"
+        android:onClick="handleOk"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
