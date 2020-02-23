@@ -56,11 +56,15 @@ public class ProfileActivity extends AppCompatActivity {
 
 
     public void handleHomepage(View view) {
-        String homepage = (String) homepageText.getText();
+        String homepage = homepageText.getText().toString();
 
-        Intent intent=new Intent(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse(homepage));
 
-        startActivity(intent);
+        if (!homepage.startsWith("https://") && !homepage.startsWith("http://")){
+            homepage = "http://" + homepage;
+        }
+        Intent openUrlIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(homepage));
+        if (openUrlIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(openUrlIntent);
+        }
     }
 }
