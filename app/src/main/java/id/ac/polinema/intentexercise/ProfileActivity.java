@@ -2,9 +2,12 @@ package id.ac.polinema.intentexercise;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,6 +20,8 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView homepageText;
     private TextView aboutText;
     private ImageView profilepict;
+
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +39,7 @@ public class ProfileActivity extends AppCompatActivity {
         if (extras != null) {
 //            String usernameInput
             // TODO: display value here
-            User user = extras.getParcelable(RegisterActivity.USER_KEY);
+            user = extras.getParcelable(RegisterActivity.USER_KEY);
 
             fullnameText.setText(user.getFullname());
             emailText.setText(user.getEmail());
@@ -47,5 +52,15 @@ public class ProfileActivity extends AppCompatActivity {
 
         }
 
+    }
+
+
+    public void handleHomepage(View view) {
+        String homepage = (String) homepageText.getText();
+
+        Intent intent=new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(homepage));
+
+        startActivity(intent);
     }
 }
